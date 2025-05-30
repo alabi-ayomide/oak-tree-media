@@ -1,0 +1,1755 @@
+/* =============================================================
+   Real 
+   ============================================================= */
+
+/* Add custom properties for header height */
+:root {
+  --header-height: 260px;
+  --nav-width: 200px;
+  --book-menu-height: calc(12em * 1.3);
+  --spacing-unit: 0.7em;
+}
+
+body {
+  background-color: white;
+  color: black;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure all elements respect border-box model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* =============================================================
+     Header and Navigation
+     ============================================================= */
+
+/* Fix the header and ensure it stays on top */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+}
+
+/* New container to stack the logo and hamburger vertically */
+.logo-hamburger {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Update header-content so the logo-hamburger and nav appear side by side */
+.header-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.site-logo {
+  display: block;
+  position: absolute;
+  /* height: 10px;
+  width: 160px; */
+  left: 8px; /* Add this to control left positioning */
+  top: 1px;
+  object-fit: contain;
+  object-position: left;
+}
+
+/* Hamburger button */
+.menu-toggle {
+  position: absolute;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  z-index: 55;
+  /* margin-top: 9em;
+  margin-left: -12em; */
+}
+
+.hamburger-icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* Modify .main-nav to appear below the hamburger inside the header */
+.main-nav,
+.books-menu {
+  position: absolute;
+  background: white;
+  border: 0.1px solid #ddd;
+  border-radius: 4px;
+  /* font-size: 20px; */
+  font-weight: lighter;
+  overflow: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  visibility: visible;
+  opacity: 1;
+  z-index: 60;
+  height: 12em;
+}
+
+/* Books menu styles */
+.books-menu {
+  position: fixed !important; /* Override any conflicting styles */
+  top: calc(var(--header-height) + 2em) !important; /* below the header */
+  left: 0 !important;
+  width: var(--nav-width);
+  background-color: white;
+  border: 0.1px solid #ddd;
+  border-radius: 4px;
+  z-index: 200 !important; /* Ensure it appears above other content */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  visibility: hidden !important;
+  opacity: 0;
+  overflow-y: auto;
+  padding: 1em;
+  height: var(--book-menu-height); /* 30% taller than main menu */
+}
+
+.books-menu.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.books-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.books-menu li {
+  margin-bottom: 1em;
+}
+
+.book-list {
+  list-style: none;
+  margin: 1em;
+  padding: 0;
+}
+
+.book-list-item {
+  font-family: "Courier", monospace;
+  margin-bottom: 0.7em;
+}
+
+.book-title {
+  font-family: "Arial", monospace;
+  font-size: 14pt;
+  font-weight: bold;
+  line-height: 0.9;
+  margin-bottom: 0.8em; /* Spacing between title and author */
+}
+
+.book-author {
+  font-family: "Arial", monospace;
+  font-size: 8pt !important;
+  font-weight: 100 !important;
+}
+
+/* Book template styles */
+.book-template {
+  display: flex;
+  gap: 2em;
+  margin: 2em 0;
+  padding: 1em;
+}
+
+.book-content {
+  display: flex;
+  gap: 2em;
+  align-items: flex-start;
+}
+
+.book-image {
+  width: 200px;
+  height: auto;
+}
+
+.book-info {
+  flex: 1;
+}
+
+.book-info h3 {
+  font-size: 24px;
+  margin-bottom: 0.5em;
+}
+
+.book-info .author {
+  font-size: 18px;
+  margin-bottom: 1em;
+}
+
+.see-more-books {
+  color: red;
+  text-decoration: none;
+  font-family: "Courier", monospace;
+  font-weight: normal;
+  font-size: 12pt;
+}
+
+.main-nav.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.main-nav ul {
+  list-style: none;
+  margin: 1em;
+}
+
+.main-nav li {
+  margin: 0;
+  /* padding: 0.2em; */
+}
+
+.main-nav a {
+  /* display: block;
+  padding: 10px 20px; */
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  color: rgb(3, 3, 128);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+  font-weight: 600;
+}
+
+.text-black {
+  color: #000; /* Black */
+}
+
+.main-nav a:hover {
+  background-color: #f3f4f6;
+}
+
+/* Show navigation when menu is active */
+.main-nav.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+header h1 {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* =============================================================
+     Header‑style typography
+     ============================================================= */
+/* Section headings (<h2>) */
+h2.font-arial.text-header {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+  /* letter-spacing: 0.02em; */
+}
+
+/* Plain black headers */
+h2.font-arial.text-header {
+  color: #000; /* Black */
+}
+
+#submissions a[href^="mailto"]:hover {
+  text-decoration: underline;
+}
+
+/* "Over 300 TV Shows…" line */
+.over-300 {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 14pt;
+  color: #000; /* Black */
+  margin-top: 4em;
+}
+
+/* =============================================================
+     Main Content Spacing
+     ============================================================= */
+/* Ensure main content appears exactly below the header */
+.main-content {
+  margin-top: var(--header-height);
+  margin-left: 3em;
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
+/* Quote Section */
+#home {
+  padding-top: 1em; /* no gap between header and quote */
+  padding-bottom: 0;
+  margin-top: 0 !important; /* Force removal of space */
+  background-color: white;
+  position: relative;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.quote-container blockquote {
+  text-align: left;
+}
+
+.quote-container {
+  width: 100%;
+  padding-left: 3px;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0 1px;
+}
+
+blockquote p {
+  font-family: "Courier New", Courier, monospace;
+  font-style: italic;
+  /* font-size: 18pt; */
+  line-height: 1.7;
+}
+
+.quote-author {
+  font-family: "Arial Black", Arial, sans-serif;
+  font-style: normal;
+  font-size: 12pt; /* Match this to your quote size */
+  display: block;
+  margin-top: 1em;
+  line-height: 1.7;
+}
+
+.stars {
+  padding: 0.2em 0;
+}
+
+/* Red stars separator */
+.text-stars {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 72pt;
+  font-weight: bold;
+  line-height: 0.7;
+  margin: 0;
+  padding: 0; /* Removed all spacing */
+  color: red;
+}
+
+.font-more {
+  font-family: "Courier Regular", Courier, monospace;
+  font-style: normal;
+  font-size: 10pt;
+}
+
+/* Section Common Styling */
+section {
+  margin-top: 3px;
+  margin-bottom: 2em;
+  padding-left: 3em;
+  margin-left: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Font Styles Based on HTML Classes */
+.font-arial {
+  font-family: Arial, sans-serif;
+}
+
+.font-courier {
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* Paragraph Text */
+.font-courier.text-body {
+  font-family: "Courier Regular", Courier, monospace;
+  font-size: 10pt;
+  margin-bottom: 3px;
+  padding-left: 3px;
+  /* line-height: 1.2; */
+}
+
+/* rgb(3, 3, 128); text paragraphs */
+.font-courier.text-body.text-blue-800,
+p.font-courier.text-body.text-blue-800 {
+  color: rgb(3, 3, 128);
+}
+
+section#our-approach h2,
+section#submissions h2,
+section#agent-access h2,
+section#filmography h2,
+section#tv-shows h2,
+section#commercials h2,
+section#success-rate h2,
+section#more-info h2,
+section#contact h2,
+section#media-list h2 {
+  color: rgb(3, 3, 128);
+  font-family: "Arial Black", Arial, sans-serif;
+  font-size: 14pt;
+}
+
+section#filmography h2 {
+  color: black;
+}
+
+section#our-approach p,
+section#submissions p,
+section#agent-access p,
+section#filmography p,
+section#tv-shows p,
+section#commercials p,
+section#success-rate p,
+section#more-info p,
+section#contact p,
+section#media-list p {
+  font-family: "Courier Regular", Courier, monospace;
+  font-size: 12pt;
+}
+
+section#tv-shows p,
+section#filmography p,
+section#commercials p {
+  font-size: 14pt;
+}
+
+/* Reduce section divider spacing */
+section#our-approach,
+section#submissions,
+section#agent-access,
+section#filmography,
+section#tv-shows,
+section#commercials,
+section#success-rate,
+section#more-info,
+section#contact,
+section#media-list {
+  margin-top: 2px;
+  margin-bottom: 3em;
+}
+
+/* Add appropriate spacing and margin for each section */
+section#our-approach,
+section#submissions,
+section#agent-access {
+  padding-top: 20px;
+}
+
+section#tv-shows,
+section#commercials,
+section#success-rate {
+  padding-top: 30px;
+}
+
+section#more-info,
+section#contact,
+section#media-list {
+  padding-top: 15px;
+}
+
+section#more-info {
+  margin-top: 6em;
+}
+
+section#contact {
+  margin-top: 4em;
+}
+
+section#contact img {
+  width: 360px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 1em;
+}
+
+section#media-list {
+  font-family: "Courier New", Courier, monospace;
+}
+
+hr.short-red-bar {
+  border: none;
+  border-top: 3px solid rgba(255, 0, 0, 0.932);
+  width: 18px;
+  margin: -2em 0 0 0;
+  padding: 0;
+  position: absolute;
+}
+
+/* Movie Grid */
+.movie-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile = 1 column */
+  gap: 1pt;
+  padding-left: 3px;
+  width: 100%;
+}
+
+.movie-grid p {
+  margin: 0;
+  padding: 0;
+  font-family: "Courier Regular", Courier, monospace;
+  color: rgb(3, 3, 128);
+  font-size: 12pt;
+  line-height: 1;
+}
+
+/* Links */
+a.font-courier.text-body.text-blue-800,
+a.font-courier.text-body.text-red-600 {
+  text-decoration: none;
+  padding-left: 3px;
+  margin-top: -3px;
+  display: block;
+}
+
+/* Clickable phone number */
+#phoneNumber {
+  cursor: pointer;
+}
+#phoneNumber:hover {
+  color: rgb(3, 3, 128);
+}
+
+.for-link:hover {
+  text-decoration: underline;
+}
+
+/* Transitions for hover effects */
+.transition-colors {
+  transition: color 0.3s ease;
+}
+
+/* Content Alignment */
+.main-content,
+.quote-container,
+section,
+[class*="max-w-"],
+.mx-auto,
+main > div {
+  margin-right: auto;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Ultra‑Responsive Breakpoints */
+/* Remove all media query positioning for books menu */
+@media screen and (max-width: 479px),
+  (min-width: 480px) and (max-width: 767px),
+  (min-width: 768px),
+  (min-width: 1024px),
+  (min-width: 1400px) {
+  .books-menu {
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    font-size: inherit !important;
+  }
+}
+
+/* Extra Small Devices */
+@media screen and (max-width: 237px) {
+  .site-logo {
+    max-height: 300px !important;
+    max-width: 240px !important;
+    margin-top: 0 !important;
+  }
+
+  .quote-author {
+    font-size: 7pt;
+    /* margin-top: 0.5em; */
+  }
+
+  .main-content {
+    margin: 13em 0;
+    padding: 0;
+  }
+
+  .hamburger-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .main-nav ul {
+    margin-top: 1em;
+  }
+}
+
+@media screen and (min-width: 238px) and (max-width: 350px) {
+  .site-logo {
+    max-height: 820px;
+    max-width: 320px;
+    margin-top: -2em;
+  }
+
+  .quote-author {
+    font-size: 10pt;
+    /* margin-top: 0.5em; */
+  }
+
+  .main-content {
+    margin: 13em 0;
+    padding: 0;
+  }
+
+  .hamburger-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .main-nav ul {
+    margin-top: 1em;
+  }
+}
+
+/* For very small phones (320-360px) */
+@media (max-width: 360px) {
+  body {
+    padding: 0 0.5em;
+  }
+
+  header {
+    height: 165px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    bottom: 0;
+  }
+
+  .site-logo {
+    height: 300px;
+    width: 300px;
+    top: -100px;
+    left: 10px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hamburger-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .menu-toggle {
+    margin-top: -1em;
+    margin-left: 0.5em;
+  }
+
+  .main-nav,
+  .books-menu {
+    margin-top: 1em;
+    margin-left: 9em;
+    font-size: 12pt;
+    position: absolute;
+    background-color: white;
+    z-index: 80;
+  }
+
+  .main-nav ul {
+    padding: 0.3em;
+  }
+
+  .stars {
+    padding: 0 1em;
+    margin: 0em;
+  }
+
+  section {
+    margin-left: -1.2em;
+  }
+
+  #home {
+    margin-top: 0;
+    padding-top: 2em;
+    top: 0;
+    margin-left: -1.6em;
+  }
+
+  .text-stars {
+    font-size: 60pt;
+  }
+
+  section#our-approach p,
+  section#submissions p,
+  section#agent-access p,
+  section#filmography p,
+  section#tv-shows p,
+  section#commercials p,
+  section#success-rate p,
+  section#more-info p,
+  section#contact p,
+  section#media-list p {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  section#our-approach a,
+  section#submissions a,
+  section#agent-access a,
+  section#filmography a,
+  section#tv-shows a,
+  section#commercials a,
+  section#success-rate a,
+  section#more-info a,
+  section#contact a,
+  section#media-list a {
+    padding-left: 0;
+    margin-left: 0;
+    color: rgb(3, 3, 128);
+  }
+
+  .main-content,
+  section,
+  [class*="max-w-"],
+  .mx-auto,
+  main > div {
+    width: 100%;
+  }
+
+  .movie-grid {
+    grid-template-columns: 1fr;
+    gap: 1pt;
+  }
+
+  blockquote p {
+    margin-top: 0;
+  }
+
+  .quote-text2 {
+    margin-left: 2em;
+  }
+}
+
+/* For slightly larger small phones (360-380px) */
+@media (min-width: 361px) and (max-width: 449px) {
+  .site-logo {
+    height: 300px;
+    width: 300px;
+    top: -100px;
+    left: 10px;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Navigation menu adjustments */
+  .main-nav,
+  .books-menu {
+    position: absolute;
+    margin-top: 1em;
+    margin-left: 9em;
+    /* margin: 0; */
+    font-size: 14px;
+    overflow-y: auto; /* Add scroll if needed */
+  }
+
+  .main-nav ul {
+    margin-top: 1em;
+  }
+
+  .main-content {
+    margin: 13em 0;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  body {
+    padding: 0 0.5em;
+  }
+
+  header {
+    height: 165px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    bottom: 0;
+  }
+
+  .site-logo {
+    max-height: 900px;
+    max-width: 350px;
+    margin-left: 0.5em;
+  }
+
+  .hamburger-icon {
+    width: 90px;
+    height: 90px;
+  }
+
+  .menu-toggle {
+    /* adjust consistently */
+    margin-top: 1em;
+    margin-left: 1em;
+    /* position: absolute; */
+  }
+
+  .main-content {
+    margin: 12em 0;
+    padding: 0;
+  }
+
+  .stars {
+    padding: 0 1em;
+    margin: 0em;
+  }
+
+  section {
+    margin-left: -1.2em;
+  }
+
+  #home {
+    margin-top: 0;
+    padding-top: 0;
+    top: 0;
+    margin-left: -1.6em;
+    /* position: absolute; */
+  }
+
+  .nav {
+    margin-left: -5.3em;
+  }
+
+  .text-stars {
+    font-size: 60pt;
+    /* padding-left: 0; */
+  }
+
+  section#our-approach p,
+  section#submissions p,
+  section#agent-access p,
+  section#filmography p,
+  section#tv-shows p,
+  section#commercials p,
+  section#success-rate p,
+  section#more-info p,
+  section#contact p,
+  section#media-list p {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  section#our-approach a,
+  section#submissions a,
+  section#agent-access a,
+  section#filmography a,
+  section#tv-shows a,
+  section#commercials a,
+  section#success-rate a,
+  section#more-info a,
+  section#contact a,
+  section#media-list a {
+    padding-left: 0;
+    margin-left: 0;
+    color: rgb(3, 3, 128);
+  }
+
+  .main-content,
+  section,
+  [class*="max-w-"],
+  .mx-auto,
+  main > div {
+    width: 100%;
+  }
+
+  .movie-grid {
+    grid-template-columns: 1fr;
+    gap: 1pt;
+  }
+
+  blockquote p {
+    margin-top: 0;
+  }
+
+  .quote-text2 {
+    margin-left: 2em;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  body {
+    padding: 0 0.5em;
+  }
+
+  header {
+    height: 165px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    bottom: 0;
+  }
+
+  .site-logo {
+    max-height: 950px;
+    max-width: 400px;
+    margin-left: 0.3em;
+  }
+
+  .hamburger-icon {
+    width: 90px;
+    height: 90px;
+  }
+  .menu-toggle {
+    /* adjust consistently */
+    margin-top: 0em;
+    margin-left: 1.3em;
+  }
+
+  .nav {
+    margin-left: -5.3em;
+  }
+
+  .main-content {
+    margin: 13em 0;
+    padding: 0;
+  }
+
+  .main-nav,
+  .books-menu {
+    margin-top: 1em;
+    margin-left: 9em;
+    font-size: 12pt;
+    position: absolute;
+    background-color: white;
+    z-index: 80;
+  }
+
+  .main-nav ul {
+    padding: 0.3em;
+  }
+
+  .stars {
+    padding: 0 1em;
+    margin: 0em;
+  }
+
+  section {
+    margin-left: -1.2em;
+  }
+
+  #home {
+    margin-top: 0;
+    padding-top: 0;
+    top: 0;
+    margin-left: -1.6em;
+  }
+
+  .text-stars {
+    font-size: 60pt;
+    /* padding-left: 0; */
+  }
+
+  section#our-approach p,
+  section#submissions p,
+  section#agent-access p,
+  section#filmography p,
+  section#tv-shows p,
+  section#commercials p,
+  section#success-rate p,
+  section#more-info p,
+  section#contact p,
+  section#media-list p {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  section#our-approach a,
+  section#submissions a,
+  section#agent-access a,
+  section#filmography a,
+  section#tv-shows a,
+  section#commercials a,
+  section#success-rate a,
+  section#more-info a,
+  section#contact a,
+  section#media-list a {
+    padding-left: 0;
+    margin-left: 0;
+    color: rgb(3, 3, 128);
+  }
+
+  .main-content,
+  section,
+  [class*="max-w-"],
+  .mx-auto,
+  main > div {
+    width: 100%;
+  }
+
+  .movie-grid {
+    grid-template-columns: 1fr;
+    gap: 1pt;
+  }
+
+  blockquote p {
+    margin-top: 0;
+  }
+
+  .quote-text2 {
+    margin-left: 2em;
+  }
+}
+
+/* Small Phones & Portrait Tablets */
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  header {
+    height: 252px;
+  }
+
+  .site-logo {
+    height: 750px;
+    width: 550px;
+    top: -300px;
+    left: 10px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hamburger-icon {
+    width: 110px;
+    height: 110px;
+  }
+
+  .menu-toggle {
+    /* adjust consistently */
+    margin-top: 2em;
+    margin-left: 1.3em;
+  }
+
+  .movie-grid {
+    grid-template-columns: 1fr;
+    gap: 1pt;
+  }
+
+  .main-nav ul {
+    padding: 0em;
+  }
+
+  .book-template {
+    flex-direction: column;
+  }
+
+  .book-image {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .books-menu {
+    width: 90%;
+    left: 5%;
+    max-height: 80vh;
+  }
+
+  section#contact {
+    padding-top: 4em;
+  }
+
+  section#contact img {
+    width: 90%; /* scales image nicely on mobile */
+    margin-top: 1em;
+  }
+
+  .stars {
+    padding: 0;
+    margin: 0 2em;
+  }
+
+  .main-nav,
+  .books-menu {
+    position: absolute;
+    background-color: white;
+    /* padding: 0.5em; */
+    font-size: 25px;
+    margin-left: 2em;
+    margin-top: 1.7em;
+  }
+
+  /* .main-nav ul {
+    padding: 0.3em;
+  } */
+
+  #home {
+    margin: 0;
+    padding: 1em 0 2em 2.3em;
+  }
+
+  section {
+    margin-left: -0.5em;
+  }
+
+  .text-stars {
+    font-size: 65pt;
+    /* padding-left: 0; */
+  }
+
+  section#our-approach p,
+  section#submissions p,
+  section#agent-access p,
+  section#filmography p,
+  section#tv-shows p,
+  section#commercials p,
+  section#success-rate p,
+  section#more-info p,
+  section#contact p,
+  section#media-list p {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  section#our-approach a,
+  section#submissions a,
+  section#agent-access a,
+  section#filmography a,
+  section#tv-shows a,
+  section#commercials a,
+  section#success-rate a,
+  section#more-info a,
+  section#contact a,
+  section#media-list a {
+    padding-left: 0;
+    margin-left: 0;
+    color: rgb(3, 3, 128);
+  }
+}
+
+/* Consolidated Media Queries */
+@media (min-width: 768px) {
+  :root {
+    --header-height: 250px;
+  }
+  header {
+    height: var(--header-height);
+  }
+
+  .site-logo {
+    left: 18px;
+    top: -35px;
+    height: 245px;
+    width: 700px;
+  }
+
+  .hamburger-icon {
+    width: 110px;
+    height: 110px;
+  }
+
+  .menu-toggle {
+    /* adjust consistently */
+    margin-top: 2.7em;
+    margin-left: 1.3em;
+  }
+
+  .stars {
+    padding: 0;
+    margin: 0 2.2em;
+    top: 0;
+  }
+
+  .main-nav,
+  .books-menu {
+    position: absolute;
+    background-color: white;
+    /* padding: 0.5em; */
+    font-size: 25px;
+    margin-left: 2em;
+    margin-top: 1.7em;
+  }
+
+  .main-nav ul {
+    padding: 0.3em;
+  }
+
+  #home {
+    margin: 0;
+    padding: 1.5em 2em;
+    width: 100%;
+    margin-bottom: 3em;
+    font-size: 14pt;
+  }
+
+  section {
+    margin-left: -0.4em;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr); /* For tablets */
+    column-gap: 2em; /* Reduced from default gap */
+    row-gap: 1pt;
+    width: 90%;
+  }
+
+  .text-stars {
+    font-size: 65pt;
+    /* padding-left: 0; */
+  }
+
+  section#our-approach p,
+  section#submissions p,
+  section#agent-access p,
+  section#filmography p,
+  section#tv-shows p,
+  section#commercials p,
+  section#success-rate p,
+  section#more-info p,
+  section#contact p,
+  section#media-list p {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  section#our-approach a,
+  section#submissions a,
+  section#agent-access a,
+  section#filmography a,
+  section#tv-shows a,
+  section#commercials a,
+  section#success-rate a,
+  section#more-info a,
+  section#contact a,
+  section#media-list a {
+    padding-left: 0;
+    margin-left: 0;
+    color: rgb(3, 3, 128);
+  }
+  /* blockquote p {
+    font-size: 20pt;
+  } */
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-height: 350px;
+  }
+  header {
+    height: var(--header-height);
+  }
+  .site-logo {
+    left: 40px;
+    top: 20px;
+    max-height: 700px;
+    max-width: 900px;
+    position: absolute;
+  }
+
+  .hamburger-icon {
+    width: 160px;
+    height: 160px;
+  }
+  .menu-toggle {
+    /* adjust consistently */
+    margin-left: 2em;
+    margin-top: 2em;
+  }
+
+  .main-nav,
+  .books-menu {
+    position: absolute;
+    background-color: white;
+    padding: 0.2em;
+    margin-left: 3em;
+    margin-top: 2.3em;
+  }
+
+  .main-nav ul {
+    padding: 0.3em;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5em;
+    row-gap: 1pt;
+    width: 85%;
+    padding-left: 0.5em;
+  }
+
+  .body-wrap {
+    width: 70%;
+    margin-left: 0.5em;
+    margin-right: auto;
+  }
+
+  .stars {
+    padding: 0;
+    margin: 0 3em;
+  }
+
+  section {
+    margin-left: 0.3em;
+  }
+
+  #home {
+    margin-left: 0.6em;
+    padding-top: 2em;
+  }
+
+  .text-stars {
+    font-size: 60pt;
+    /* padding-left: 0; */
+  }
+
+  section#our-approach p,
+  section#submissions p,
+  section#agent-access p,
+  section#filmography p,
+  section#tv-shows p,
+  section#commercials p,
+  section#success-rate p,
+  section#more-info p,
+  section#contact p,
+  section#media-list p {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  section#our-approach a,
+  section#submissions a,
+  section#agent-access a,
+  section#filmography a,
+  section#tv-shows a,
+  section#commercials a,
+  section#success-rate a,
+  section#more-info a,
+  section#contact a,
+  section#media-list a {
+    padding-left: 0;
+    margin-left: 0;
+    color: rgb(3, 3, 128);
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --header-height: 350px;
+  }
+
+  .site-logo {
+    left: 30px;
+    top: 10px;
+    max-height: 890px;
+    max-width: 1270px;
+  }
+  .hamburger-icon {
+    width: 150px;
+    height: 150px;
+  }
+  .menu-toggle {
+    top: 14em;
+    margin-left: -2em;
+  }
+
+  .main-nav,
+  .books-menu {
+    position: absolute;
+    background-color: white;
+    padding: 0.5em;
+    line-height: 1em;
+    font-size: 25pt;
+    margin-left: 0.8em;
+    margin-top: 1.8em;
+  }
+
+  .main-nav ul {
+    padding: 0;
+  }
+
+  .movie-grid {
+    column-gap: 1em; /* Minimal gap for largest screens */
+    width: 80%;
+  }
+
+  .stars {
+    padding: 0;
+    margin: 0 1.8em;
+  }
+
+  section {
+    margin-left: -0.6em;
+  }
+
+  #home {
+    margin-top: 0;
+    padding-top: 1em;
+    top: 0;
+    margin-left: 0em;
+  }
+}
+
+/* Consolidated max-width adjustments */
+@media screen and (min-width: 1380px) and (max-width: 1390px) {
+  [class*="max-w-"] {
+    width: 85%;
+  }
+
+  :root {
+    --header-height: 380px;
+  }
+
+  header {
+    height: var(--header-height);
+  }
+
+  .site-logo {
+    left: 30px;
+    top: 10px;
+    max-height: 900px;
+    max-width: 1570px;
+  }
+  .hamburger-icon {
+    width: 200px;
+    height: 200px;
+  }
+  .menu-toggle {
+    top: 14em;
+    margin-left: -5em;
+  }
+
+  .main-nav,
+  .books-menu {
+    position: absolute;
+    background-color: white;
+    padding: 0.5em;
+    line-height: 1em;
+    font-size: 25pt;
+    margin-left: 0em;
+    margin-top: 1.8em;
+  }
+
+  .main-nav ul {
+    padding: 0;
+  }
+
+  .stars {
+    padding: 0;
+    margin: 0 -0.8em;
+  }
+
+  section {
+    margin-left: 1em;
+  }
+
+  #home {
+    margin-top: 0;
+    padding-top: 1em;
+    top: 0;
+    margin-left: 1.3em;
+  }
+}
+/* Consolidated max-width adjustments */
+@media screen and (min-width: 1400px) and (max-width: 1490px) {
+  [class*="max-w-"] {
+    width: 85%;
+  }
+
+  :root {
+    --header-height: 480px;
+  }
+
+  header {
+    height: var(--header-height);
+  }
+
+  .site-logo {
+    left: 20px;
+    top: 10px;
+    max-height: 1800px;
+    width: 2500px;
+  }
+
+  .hamburger-icon {
+    width: 250px;
+    height: 250px;
+  }
+
+  .menu-toggle {
+    top: 20.5em;
+    margin-left: -10.5em;
+  }
+
+  .main-nav,
+  .books-menu {
+    position: absolute;
+    background-color: white;
+    padding: 0.5em;
+    line-height: 1em;
+    font-size: 30pt;
+    margin-left: -0.5em;
+    margin-top: 1.8em;
+  }
+
+  .main-nav ul {
+    padding: 0;
+  }
+
+  .stars {
+    padding: 0;
+    margin: 0 -1.7em;
+  }
+
+  section {
+    margin-left: 0em;
+  }
+
+  #home {
+    margin-top: 0;
+    padding-top: 2em;
+    top: 0;
+    margin-left: 0.6em;
+  }
+}
+
+@media screen and (min-width: 1491px) {
+  [class*="max-w-"] {
+    width: 85%;
+  }
+
+  :root {
+    --header-height: 480px;
+  }
+
+  header {
+    height: var(--header-height);
+  }
+
+  .site-logo {
+    left: 20px;
+    top: 10px;
+    max-height: 1800px;
+    width: 2500px;
+  }
+
+  .hamburger-icon {
+    width: 250px;
+    height: 250px;
+  }
+
+  .menu-toggle {
+    top: 20.5em;
+    margin-left: -10.5em;
+  }
+
+  .main-nav,
+  .books-menu {
+    position: absolute;
+    background-color: white;
+    padding: 0.5em;
+    line-height: 1em;
+    font-size: 30pt;
+    margin-left: -0.5em;
+    margin-top: 1.8em;
+  }
+
+  .main-nav ul {
+    padding: 0;
+  }
+
+  .stars {
+    padding: 0;
+    margin: 0 -2em;
+  }
+
+  section {
+    margin-left: 0em;
+  }
+
+  #home {
+    margin-top: 0;
+    padding-top: 2em;
+    top: 0;
+    margin-left: 0.5em;
+  }
+}
+
+/* Fix for the navigation menu animation */
+.main-nav,
+.books-menu {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.main-nav.hidden {
+  opacity: 0;
+}
+
+/* Override any Tailwind margin classes to ensure no space */
+section.mt-\[300px\],
+section.lg\:mt-\[350px\],
+section.xl\:mt-\[400px\],
+section.pt-16,
+section.lg\:pt-10,
+section.pb-0 {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* JavaScript DOM-based header height calculations - override these */
+section#home[style*="margin-top"] {
+  margin-top: 0 !important;
+}
+
+a/* Add general link hover styles */
+a {
+  text-decoration: none;
+  transition: text-decoration 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Universal hover and active states */
+a:hover,
+a:active,
+a:focus {
+  text-decoration: underline !important;
+}
+
+/* Specific link styles */
+.font-courier.text-body.text-blue-800,
+.font-courier.text-body.text-red-600,
+.main-nav a,
+#submissions a[href^="mailto"],
+.for-link {
+  text-decoration: none;
+}
+
+/* Hover states for specific links */
+.font-courier.text-body.text-blue-800:hover,
+.font-courier.text-body.text-blue-800:active,
+.font-courier.text-body.text-red-600:hover,
+.font-courier.text-body.text-red-600:active,
+.main-nav a:hover,
+.main-nav a:active,
+#submissions a[href^="mailto"]:hover,
+#submissions a[href^="mailto"]:active,
+.for-link:hover,
+.for-link:active {
+  text-decoration: underline !important;
+}
+
+/* Add touch device support */
+@media (hover: none) {
+  a:active,
+  a:focus {
+    text-decoration: underline !important;
+  }
+
+  /* Add specific active states for touch devices */
+  .font-courier.text-body.text-blue-800:active,
+  .font-courier.text-body.text-red-600:active,
+  .main-nav a:active,
+  #submissions a[href^="mailto"]:active,
+  .for-link:active {
+    text-decoration: underline !important;
+  }
+}
+
+/* Book Page Styles */
+.book-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  line-height: 1.6;
+}
+
+/* Submission Page Styles */
+.submission-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.submission-instructions {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.instructions-link {
+  display: block;
+  text-align: center;
+  font-family: "Courier New", monospace;
+  color: #0000cc;
+  margin-top: 1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .book-title {
+    font-size: 2rem;
+  }
+  .book-subtitle {
+    font-size: 1.3rem;
+  }
+}
+
+/* Mobile styles - image on top, text below */
+@media (max-width: 768px) {
+  .book-template {
+    flex-direction: column;
+    gap: 1.5em;
+  }
+
+  .book-content {
+    flex-direction: column;
+    gap: 1.5em;
+  }
+
+  .book-image {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .book-info h3,
+  .book-info .author {
+    text-align: left;
+  }
+
+  .book-info .description {
+    text-align: justify;
+  }
+
+  .see-more-books {
+    text-align: left;
+    margin-top: 1.5em;
+  }
+}
+
+/* Adjustments for very small screens */
+@media (max-width: 360px) {
+  .book-image {
+    max-width: 250px;
+  }
+
+  .book-info h3 {
+    font-size: 20px;
+  }
+
+  .book-info .author {
+    font-size: 16px;
+  }
+
+  .book-info .description {
+    font-size: 11pt;
+  }
+}
