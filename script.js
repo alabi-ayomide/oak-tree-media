@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const isHidden = mainNav.classList.contains("hidden");
-
     if (isHidden) {
       mainNav.classList.remove("hidden");
       setTimeout(() => {
@@ -34,10 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Hide main nav
     mainNav.classList.add("hidden");
+    mainNav.style.opacity = "0";
 
     // Show books menu
     booksMenu.classList.add("active");
-    booksMenu.classList.remove("hidden");
+    // booksMenu.classList.remove("hidden");
     booksMenu.style.visibility = "visible";
     booksMenu.style.opacity = "1";
   });
@@ -58,23 +58,30 @@ document.addEventListener("DOMContentLoaded", () => {
           mainNav.classList.add("hidden");
         }, 300);
       }
-      // Hide books menu
-      booksMenu.classList.remove("active");
+
+      // hide books menu if it is active
+      if (booksMenu.classList.contains("active")) {
+        booksMenu.style.opacity = "0";
+        setTimeout(() => {
+          booksMenu.classList.remove("active");
+          booksMenu.style.visibility = "hidden";
+        }, 300);
+      }
     }
   });
 
-  // Optional: Close both menus if user clicks outside
-  document.addEventListener("click", (e) => {
-    const isClickInsideMenus =
-      mainNav.contains(e.target) ||
-      booksMenu.contains(e.target) ||
-      menuToggle.contains(e.target) ||
-      seeMoreLink.contains(e.target);
-    if (!isClickInsideMenus) {
-      mainNav.classList.remove("active");
-      booksMenu.classList.remove("active");
-    }
-  });
+  // // Optional: Close both menus if user clicks outside
+  // document.addEventListener("click", (e) => {
+  //   const isClickInsideMenus =
+  //     mainNav.contains(e.target) ||
+  //     booksMenu.contains(e.target) ||
+  //     menuToggle.contains(e.target) ||
+  //     seeMoreLink.contains(e.target);
+  //   if (!isClickInsideMenus) {
+  //     mainNav.classList.remove("active");
+  //     booksMenu.classList.remove("active");
+  //   }
+  // });
 
   // Handle navigation click events
   document.querySelectorAll(".main-nav a").forEach((link) => {
@@ -299,22 +306,5 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Failed to copy text: ", err);
       }
     });
-  }
-});
-
-// Add this at the bottom of the file
-// Retry Tailwind check after window load
-window.addEventListener("load", () => {
-  // Remove fallback if Tailwind loaded late
-  if (document.body.classList.contains("fallback-active")) {
-    const testElement = document.createElement("div");
-    testElement.className = "hidden";
-    document.body.appendChild(testElement);
-    const computedStyle = window.getComputedStyle(testElement);
-    if (computedStyle.display === "none") {
-      document.body.classList.remove("fallback-active");
-      console.log("Tailwind CSS loaded, removed fallback styles");
-    }
-    document.body.removeChild(testElement);
   }
 });
