@@ -112,8 +112,6 @@ header {
 /* Books menu styles */
 .books-menu {
   position: fixed !important; /* Override any conflicting styles */
-  left: 3em !important;
-  top: 11em !important;
   width: var(--nav-width);
   background-color: white;
   border: 0.1px solid #ddd;
@@ -560,18 +558,6 @@ main > div {
 }
 
 /* Ultra‑Responsive Breakpoints */
-/* Remove all media query positioning for books menu */
-@media screen and (max-width: 479px),
-  (min-width: 480px) and (max-width: 767px),
-  (min-width: 768px),
-  (min-width: 1024px),
-  (min-width: 1400px) {
-  .books-menu {
-    margin-left: 0 !important;
-    margin-top: 0 !important;
-    font-size: inherit !important;
-  }
-}
 
 /* Extra Small Devices */
 @media screen and (max-width: 237px) {
