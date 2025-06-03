@@ -112,7 +112,7 @@ header {
 /* Books menu styles */
 .books-menu {
   position: fixed !important; /* Override any conflicting styles */
-  width: var(--nav-width);
+  width: var(--nav-width) * 2;
   background-color: white;
   border: 0.1px solid #ddd;
   border-radius: 4px;
@@ -151,18 +151,23 @@ header {
   margin-bottom: 0.7em;
 }
 
+.book-list-item a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
 .book-title {
-  font-family: "Arial", monospace;
   font-size: 14pt;
   font-weight: bold;
-  line-height: 0.9;
+  line-height: 0.8;
   margin-bottom: 0.8em; /* Spacing between title and author */
 }
 
 .book-author {
-  font-family: "Arial", monospace;
-  font-size: 8pt !important;
+  font-size: 12pt !important;
   font-weight: 100 !important;
+  line-height: 0.8;
 }
 
 /* Book template styles */
@@ -400,7 +405,7 @@ p.font-courier.text-body.text-blue-800 {
 
 section#our-approach h2,
 section#submissions h2,
-section#agent-access h2,
+section#our-books h2,
 section#filmography h2,
 section#tv-shows h2,
 section#commercials h2,
@@ -419,7 +424,7 @@ section#filmography h2 {
 
 section#our-approach p,
 section#submissions p,
-section#agent-access p,
+section#our-books p,
 section#filmography p,
 section#tv-shows p,
 section#commercials p,
@@ -440,7 +445,7 @@ section#commercials p {
 /* Reduce section divider spacing */
 section#our-approach,
 section#submissions,
-section#agent-access,
+section#our-books,
 section#filmography,
 section#tv-shows,
 section#commercials,
@@ -455,7 +460,7 @@ section#media-list {
 /* Add appropriate spacing and margin for each section */
 section#our-approach,
 section#submissions,
-section#agent-access {
+section#our-books {
   padding-top: 20px;
 }
 
@@ -682,7 +687,7 @@ main > div {
 
   section#our-approach p,
   section#submissions p,
-  section#agent-access p,
+  section#our-books p,
   section#filmography p,
   section#tv-shows p,
   section#commercials p,
@@ -696,7 +701,7 @@ main > div {
 
   section#our-approach a,
   section#submissions a,
-  section#agent-access a,
+  section#our-books a,
   section#filmography a,
   section#tv-shows a,
   section#commercials a,
@@ -826,7 +831,7 @@ main > div {
 
   section#our-approach p,
   section#submissions p,
-  section#agent-access p,
+  section#our-books p,
   section#filmography p,
   section#tv-shows p,
   section#commercials p,
@@ -840,7 +845,7 @@ main > div {
 
   section#our-approach a,
   section#submissions a,
-  section#agent-access a,
+  section#our-books a,
   section#filmography a,
   section#tv-shows a,
   section#commercials a,
@@ -949,7 +954,7 @@ main > div {
 
   section#our-approach p,
   section#submissions p,
-  section#agent-access p,
+  section#our-books p,
   section#filmography p,
   section#tv-shows p,
   section#commercials p,
@@ -963,7 +968,7 @@ main > div {
 
   section#our-approach a,
   section#submissions a,
-  section#agent-access a,
+  section#our-books a,
   section#filmography a,
   section#tv-shows a,
   section#commercials a,
@@ -1093,7 +1098,7 @@ main > div {
 
   section#our-approach p,
   section#submissions p,
-  section#agent-access p,
+  section#our-books p,
   section#filmography p,
   section#tv-shows p,
   section#commercials p,
@@ -1107,7 +1112,7 @@ main > div {
 
   section#our-approach a,
   section#submissions a,
-  section#agent-access a,
+  section#our-books a,
   section#filmography a,
   section#tv-shows a,
   section#commercials a,
@@ -1194,7 +1199,7 @@ main > div {
 
   section#our-approach p,
   section#submissions p,
-  section#agent-access p,
+  section#our-books p,
   section#filmography p,
   section#tv-shows p,
   section#commercials p,
@@ -1208,7 +1213,7 @@ main > div {
 
   section#our-approach a,
   section#submissions a,
-  section#agent-access a,
+  section#our-books a,
   section#filmography a,
   section#tv-shows a,
   section#commercials a,
@@ -1298,7 +1303,7 @@ main > div {
 
   section#our-approach p,
   section#submissions p,
-  section#agent-access p,
+  section#our-books p,
   section#filmography p,
   section#tv-shows p,
   section#commercials p,
@@ -1312,7 +1317,7 @@ main > div {
 
   section#our-approach a,
   section#submissions a,
-  section#agent-access a,
+  section#our-books a,
   section#filmography a,
   section#tv-shows a,
   section#commercials a,
@@ -1724,7 +1729,7 @@ a:focus {
 /* Adjustments for very small screens */
 @media (max-width: 360px) {
   .book-image {
-    max-width: 250px;
+    max-width: 150px;
   }
 
   .book-info h3 {
