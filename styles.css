@@ -1051,7 +1051,7 @@ main > div {
 
   .book-image {
     width: 100%;
-    max-width: 300px;
+    max-width: 100px;
     margin: 0 auto;
   }
 
