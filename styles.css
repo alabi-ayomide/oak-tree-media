@@ -590,7 +590,7 @@ main > div {
 }
 
 .contact-info {
-  margin-top: 3em !important;
+  margin-top: 2em !important;
   font-weight: bolder;
   font-size: 25px !important;
 }
@@ -630,9 +630,9 @@ main > div {
 @media screen and (min-width: 238px) and (max-width: 350px) {
   .site-logo {
     max-height: 350px !important;
-    max-width: 220px !important;
+    max-width: 300px !important;
     margin-top: 0 !important;
-    margin-left: 0.6em !important;
+    margin-left: 0.8em !important;
   }
 
   .quote-author {
@@ -648,7 +648,7 @@ main > div {
   .hamburger-icon {
     width: 30px;
     height: 30px;
-    margin-top: 0em;
+    /* margin-top: 0em; */
   }
 
   .main-nav ul {
@@ -672,11 +672,11 @@ main > div {
 
   .site-logo {
     height: 350px;
-    width: 320px;
+    width: 330px;
     top: -100px;
     /* left: 5px; */
     padding: 0;
-    margin-left: 0.6em;
+    margin-left: 0.8em !important;
   }
 
   .hamburger-icon {
@@ -782,7 +782,7 @@ main > div {
     top: -100px;
     /* left: 5px; */
     padding: 0;
-    margin-left: 0.5em;
+    margin-left: 0.8em !important;
   }
 
   /* Navigation menu adjustments */
@@ -821,7 +821,7 @@ main > div {
   .site-logo {
     max-height: 950px;
     max-width: 400px;
-    /* margin-left: 1em; */
+    margin-left: 0.7em !important;
   }
 
   .hamburger-icon {
@@ -933,7 +933,7 @@ main > div {
   .site-logo {
     max-height: 1000px;
     max-width: 450px;
-    margin-left: 0.3em;
+    margin-left: 0.6em;
   }
 
   .hamburger-icon {
@@ -1040,36 +1040,6 @@ main > div {
     margin-left: 2em;
   }
 }
-
-/* Mobile styles - ONLY apply to mobile screens */
-@media (max-width: 767px) {
-  .book-content {
-    flex-direction: column; /* Stack vertically on mobile */
-    gap: 1.5em;
-    text-align: left;
-  }
-
-  .book-image {
-    width: 100%;
-    max-width: 100px;
-    margin: 0 auto;
-  }
-
-  .book-info h3,
-  .book-info .author {
-    text-align: left;
-  }
-
-  .book-info .description {
-    text-align: justify;
-  }
-
-  .see-more-books {
-    text-align: left;
-    margin-top: 1.5em;
-  }
-}
-
 /* Small Phones & Portrait Tablets */
 @media screen and (min-width: 480px) and (max-width: 767px) {
   header {
@@ -1078,7 +1048,7 @@ main > div {
 
   .site-logo {
     height: 800px;
-    width: 510px;
+    width: 810px;
     top: -300px;
     /* left: 5px; */
     padding: 0;
@@ -1088,7 +1058,7 @@ main > div {
   .hamburger-icon {
     width: 110px;
     height: 110px;
-    margin-top: 0em !important;
+    margin-top: 1.2em !important;
   }
 
   .menu-toggle {
@@ -1207,12 +1177,13 @@ main > div {
     left: 13px;
     top: -35px;
     height: 295px;
-    width: 750px;
+    width: 820px;
   }
 
   .hamburger-icon {
     width: 110px;
     height: 110px;
+    margin-top: 1.5em !important;
   }
 
   .menu-toggle {
@@ -1308,9 +1279,10 @@ main > div {
   .site-logo {
     /* left: 35px; */
     top: 20px;
-    max-height: 750px;
-    max-width: 950px;
+    max-height: 750px !important;
+    max-width: 1800px !important;
     position: absolute;
+    margin-left: 0.7em !important;
   }
 
   .hamburger-icon {
@@ -1407,8 +1379,9 @@ main > div {
   .site-logo {
     /* left: 25px; */
     top: 10px;
-    max-height: 940px;
-    max-width: 1320px;
+    max-height: 940px !important;
+    max-width: 1900px !important;
+    margin-left: 1em !important;
   }
   .hamburger-icon {
     width: 150px;
@@ -1473,8 +1446,9 @@ main > div {
   .site-logo {
     /* left: 25px; */
     top: 10px;
-    max-height: 950px;
-    max-width: 1620px;
+    max-height: 950px !important;
+    max-width: 2200px !important;
+    margin-left: 1.2em !important;
   }
   .hamburger-icon {
     width: 200px;
@@ -1533,17 +1507,20 @@ main > div {
   .site-logo {
     /* left: 15px; */
     top: 10px;
-    max-height: 1850px;
-    width: 2550px;
+    max-height: 1850px !important;
+    width: 2550px !important;
+    margin-left: 0em !important;
   }
 
   .hamburger-icon {
     width: 250px;
     height: 250px;
+    margin-left: 3em !important;
+    margin-top: -5em !important;
   }
 
   .menu-toggle {
-    top: 20.5em;
+    top: 22em;
     margin-left: -10.5em;
   }
 
@@ -1595,17 +1572,20 @@ main > div {
   .site-logo {
     /* left: 15px; */
     top: 10px;
-    max-height: 1850px;
-    width: 2550px;
+    max-height: 1850px !important;
+    width: 2550px !important;
+    margin-left: 0em !important;
   }
 
   .hamburger-icon {
     width: 250px;
     height: 250px;
+    /* margin-left: 3em !important; */
+    margin-top: -5em !important;
   }
 
   .menu-toggle {
-    top: 20.5em;
+    top: 22em;
     margin-left: -10.5em;
   }
 
@@ -1775,7 +1755,7 @@ a:focus {
 
   .book-image {
     width: 100%;
-    max-width: 300px;
+    max-width: 150px;
     margin: 0 auto;
   }
 
@@ -1797,7 +1777,7 @@ a:focus {
 /* Adjustments for very small screens */
 @media (max-width: 360px) {
   .book-image {
-    max-width: 150px;
+    max-width: 150px !important;
   }
 
   .book-info h3 {
