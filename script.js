@@ -91,6 +91,45 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  document.querySelectorAll(".book-list-item a").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      // Hide books menu with animation
+      booksMenu.style.opacity = "0";
+      setTimeout(() => {
+        booksMenu.classList.remove("active");
+        booksMenu.style.visibility = "hidden";
+      }, 300);
+    });
+  });
+
+  // Update the see more books click handler
+  document.querySelectorAll(".see-more-books").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation(); // Add this to prevent event bubbling
+
+      // Hide main nav
+      mainNav.classList.add("hidden");
+      mainNav.style.opacity = "0";
+
+      // Show books menu
+      booksMenu.classList.add("active");
+      booksMenu.style.visibility = "visible";
+      booksMenu.style.opacity = "1";
+    });
+  });
+
+  // Add this function at the end of your DOMContentLoaded event
+  function enableAllBookLinks() {
+    document.querySelectorAll(".see-more-books").forEach((link) => {
+      link.style.pointerEvents = "auto";
+      link.style.cursor = "pointer";
+      link.style.color = "red";
+    });
+  }
+
+  enableAllBookLinks();
+
   // Close menu when clicking outside
   document.addEventListener("click", (e) => {
     if (!menuToggle.contains(e.target) && !mainNav.contains(e.target)) {
