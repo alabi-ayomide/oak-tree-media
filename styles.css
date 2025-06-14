@@ -197,8 +197,8 @@ header {
   gap: 3em;
   margin: 2em 0;
   padding: 1em;
-  max-height: 80vh;
-  overflow-y: auto;
+  /* max-height: 80vh;
+  overflow-y: auto; */
 }
 
 .book-content {
@@ -208,11 +208,12 @@ header {
   align-items: flex-start;
   padding: 1em 0;
   border-bottom: 1px solid #eee;
+  scroll-margin-top: calc(var(--header-height) + 20px);
 }
 
 .book-content:last-child {
   border-bottom: none;
-  padding-bottom: 7cm;
+  padding-bottom: 3em;
 }
 
 .book-image {
@@ -649,7 +650,7 @@ main > div {
 @media screen and (min-width: 238px) and (max-width: 350px) {
   .site-logo {
     max-height: 350px !important;
-    max-width: 250px !important;
+    max-width: 230px !important;
     margin-top: 0 !important;
     margin-left: 0.8em !important;
   }
@@ -1116,7 +1117,7 @@ main > div {
 
   .site-logo {
     height: 800px;
-    width: 560px;
+    width: 530px;
     top: -300px;
     /* left: 5px; */
     padding: 0;
@@ -1848,24 +1849,23 @@ a:focus {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-  .book-title {
-    font-size: 2rem;
-  }
   .book-subtitle {
     font-size: 1.3rem;
   }
-}
 
-/* Mobile styles - image on top, text below */
-@media (max-width: 768px) {
   .book-template {
     flex-direction: column;
     gap: 1.5em;
+    /* Remove any height restrictions on mobile */
+    max-height: none;
+    overflow: visible;
   }
 
   .book-content {
     flex-direction: column;
     gap: 1.5em;
+    /* Ensure proper scroll positioning */
+    scroll-margin-top: calc(var(--header-height) + 10px);
   }
 
   .book-image {

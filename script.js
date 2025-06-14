@@ -91,14 +91,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Update the book list click handler
   document.querySelectorAll(".book-list-item a").forEach((link) => {
     link.addEventListener("click", (e) => {
-      // Hide books menu with animation
-      booksMenu.style.opacity = "0";
-      setTimeout(() => {
-        booksMenu.classList.remove("active");
-        booksMenu.style.visibility = "hidden";
-      }, 300);
+      e.preventDefault(); // Prevent default anchor behavior
+
+      const targetId = link.getAttribute("href");
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        // Hide books menu first
+        booksMenu.style.opacity = "0";
+        setTimeout(() => {
+          booksMenu.classList.remove("active");
+          booksMenu.style.visibility = "hidden";
+        }, 300);
+
+        // Then scroll to the target book
+        setTimeout(() => {
+          const headerOffset =
+            document.querySelector("header").offsetHeight + 20;
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition =
+            elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }, 350); // Wait for menu to close first
+      }
     });
   });
 
