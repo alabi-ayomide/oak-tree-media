@@ -613,6 +613,7 @@ main > div {
   margin-top: 2em !important;
   font-weight: bolder;
   font-size: 25px !important;
+  white-space: normal;
 }
 
 /* Ultra‑Responsive Breakpoints */
@@ -1129,7 +1130,7 @@ main > div {
     left: 15%;
     max-height: 80vh;
     margin-top: 2.5em !important;
-    margin-left: -2.3em !important; /* Updated */
+    margin-left: -3.2em !important; /* Updated */
     padding: 20px 1em 20px 1em;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -1274,7 +1275,7 @@ main > div {
 
   .books-menu {
     margin-top: 3em !important;
-    margin-left: -2.5em !important;
+    margin-left: -3.5em !important;
     max-height: 80vh;
     width: 65%; /* More consistent with smaller screens */
     left: 12%;
@@ -1382,7 +1383,7 @@ main > div {
 
   .books-menu {
     margin-top: 3.5em !important;
-    margin-left: -4.2em !important;
+    margin-left: -5em !important;
     max-height: 75vh;
     width: 60%;
     left: 15%;
@@ -1490,7 +1491,7 @@ main > div {
 
   .books-menu {
     margin-top: 2.5em !important;
-    margin-left: 0em !important;
+    margin-left: -4em !important;
   }
 
   .main-nav,
@@ -1562,7 +1563,7 @@ main > div {
 
   .books-menu {
     margin-top: 2.5em !important;
-    margin-left: -1.5em !important;
+    margin-left: -4.5em !important;
   }
 
   .main-nav,
@@ -1861,6 +1862,16 @@ a:focus {
     overflow: visible;
   }
 
+  .contact-info {
+    font-size: 18px !important; /* More readable size for mobile */
+    padding: 0.5em 0; /* Add some vertical padding */
+  }
+
+  /* Override the existing rule that makes contact text too small */
+  #contact p {
+    font-size: inherit; /* Remove the 10px setting */
+  }
+
   .book-content {
     flex-direction: column;
     gap: 1.5em;
@@ -1938,5 +1949,11 @@ a:focus {
 
   .book-info .description {
     font-size: 11pt;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-info {
+    font-size: 16px !important;
   }
 }
